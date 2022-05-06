@@ -17,6 +17,9 @@ function drawSolid(solid, camera) {
 }
 
 function drawLine(v1, v2) {
+    if (v1.z < 0 && v2.z < 0) {
+        return
+    }
     var scale = drawer.scale
     var xcenter = drawer.xcenter
     var ycenter = drawer.ycenter

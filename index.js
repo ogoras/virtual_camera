@@ -18,10 +18,10 @@ document.addEventListener("keydown", function(event) {
     console.log(event.key)
     switch (event.key) {
         case "ArrowUp":
-            translate(solids, 0, 0, -1);
+            translate(solids, 0, 0, 1);
             break;
         case "ArrowDown":
-            translate(solids, 0, 0, 1);
+            translate(solids, 0, 0, -1);
             break;
         case "ArrowLeft":
             translate(solids, 1, 0, 0);
