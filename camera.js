@@ -2,12 +2,15 @@ function perspectiveProject(vertex) {
     var x = vertex.x;
     var y = vertex.y;
     var z = - vertex.z;
-    var angle = camera.angle;
-    return {x: vertex.x/angle, y: vertex.y/angle};
+    var angle = camera.angledegrees / 180 * Math.PI;
+    var d = 1 / Math.tan(angle / 2);
+    var X = x*d/z;
+    var Y = y*d/z;
+    return {x: X, y: Y};
 }
 
 export var camera = {
     //viewing angle
-    angle : 10,
+    angledegrees : 100,
     project : perspectiveProject
 }
