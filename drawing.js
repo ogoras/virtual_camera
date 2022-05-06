@@ -26,7 +26,7 @@ function drawLine(v1, v2) {
     drawer.ctx.stroke()
 }
 
-function init_drawer(canvas) {
+function initDrawer(canvas) {
     var c = drawer.canvas = canvas
     var width = drawer.width = c.width
     var height = drawer.height = c.height
@@ -43,11 +43,19 @@ function init_drawer(canvas) {
     ctx.lineWidth = 2
 }
 
+function clearCanvas () {
+    var c = drawer.canvas
+    var ctx = drawer.ctx
+    ctx.fillStyle = "black"
+    ctx.fillRect(0, 0, c.width, c.height)
+}
+
 export var drawer = {
     drawSolids: drawSolids,
-    init_drawer: init_drawer,
+    initDrawer: initDrawer,
     drawSolid: drawSolid,
     drawLine: drawLine,
+    clearCanvas: clearCanvas,
     canvas : null,
     width : 0.0,
     height : 0.0,
