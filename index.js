@@ -35,6 +35,24 @@ document.addEventListener("keydown", function(event) {
         case "PageDown":
             translate(solids, 0, 1, 0);
             break;
+        case "a":
+            rotate(solids, "y", -15);
+            break;
+        case "d":
+            rotate(solids, "y", 15);
+            break;
+        case "w":
+            rotate(solids, "x", -15);
+            break;
+        case "s":
+            rotate(solids, "x", 15);
+            break;
+        case "q":
+            rotate(solids, "z", -15);
+            break;
+        case "e":
+            rotate(solids, "z", 15);
+            break;
         default:
             return
     }

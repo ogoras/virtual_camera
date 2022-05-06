@@ -8,8 +8,9 @@ export function translate(solids, x, y, z) {
     applyMatrix(solids, matrix)
 }
 
-export function rotate(solids, axis, angle) {
+export function rotate(solids, axis, angledegrees) {
     var matrix
+    var angle = angledegrees / 180 * Math.PI
     switch (axis) {
         case "x":
             matrix = [
