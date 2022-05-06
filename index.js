@@ -14,7 +14,6 @@ drawer.initDrawer(canvas);
 drawer.drawSolids(solids, camera);
 
 document.addEventListener("keydown", function(event) {
-    console.log(event.key)
     switch (event.key) {
         case "ArrowUp":
             translate(solids, 0, 0, 1);

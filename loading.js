@@ -11,7 +11,6 @@ export function loadSolidsFromFile(filename) {
     else {
         blocks = fileContent.split("\r\n\r\n");
     }
-    console.log(blocks);
     for (var i = 0; i < blocks.length; i++) {
         var lines = blocks[i].split("\n");
         var solid = {
@@ -41,7 +40,6 @@ function readFile(filePath) {
     xmlhttp.send();
     if (xmlhttp.status==200) {
       result = xmlhttp.responseText;
-      console.log(result);
     }
     return result;
   }
