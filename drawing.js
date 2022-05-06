@@ -1,29 +1,58 @@
-export function drawSolid(canvas, solid, camera) {
-    //load and project the vertices
-    var vertices = [];
-    for (var vertex of solid.vertices) {
-        vertices.push(camera.project(vertex));
-    }
-    for (var edge of solid.edges) {
-        var v1 = vertices[edge.V1];
-        var v2 = vertices[edge.V2];
-        drawLine(canvas, v1, v2);
+function drawSolids(solids, camera) {
+    for (var solid of solids) {
+        drawSolid(solid, camera)
     }
 }
 
-function drawLine(c, v1, v2) {
-    var width = c.width;
-    var height = c.height;
-    var ctx = c.getContext("2d");
-    var xcenter = width / 2;
-    var ycenter = height / 2;
-    var scale = Math.max(width, height) / 2;
-    var x1 = v1.x*scale + xcenter;
-    var y1 = -v1.y*scale + ycenter;
-    var x2 = v2.x*scale + xcenter;
-    var y2 = -v2.y*scale + ycenter;
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
+function drawSolid(solid, camera) {
+    var vertices = []
+    for (var vertex of solid.vertices) {
+        vertices.push(camera.project(vertex))
+    }
+    for (var edge of solid.edges) {
+        var v1 = vertices[edge.V1]
+        var v2 = vertices[edge.V2]
+        drawLine(v1, v2)
+    }
+}
+
+function drawLine(v1, v2) {
+    var scale = drawer.scale
+    var xcenter = drawer.xcenter
+    var ycenter = drawer.ycenter
+    drawer.ctx.beginPath()
+    drawer.ctx.moveTo(v1.x*scale + xcenter,  -v1.y*scale + ycenter)
+    drawer.ctx.lineTo(v2.x*scale + xcenter, -v2.y*scale + ycenter)
+    drawer.ctx.stroke()
+}
+
+function init_drawer(canvas) {
+    var c = drawer.canvas = canvas
+    var width = drawer.width = c.width
+    var height = drawer.height = c.height
+    var ctx = drawer.ctx = c.getContext("2d")
+    drawer.xcenter = width / 2
+    drawer.ycenter = height / 2
+    var scale = drawer.scale = Math.max(width, height) / 2
+
+    // fill the canvas with black
+    ctx.fillStyle = "black"
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    ctx.strokeStyle = "white"
+    ctx.lineWidth = 2
+}
+
+export var drawer = {
+    drawSolids: drawSolids,
+    init_drawer: init_drawer,
+    drawSolid: drawSolid,
+    drawLine: drawLine,
+    canvas : null,
+    width : 0.0,
+    height : 0.0,
+    ctx : null,
+    xcenter : 0.0,
+    ycenter : 0.0,
+    scale : 0.0
 }
