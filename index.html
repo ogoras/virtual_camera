@@ -4,10 +4,45 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+
 <canvas id="myCanvas" width="1280" height="720"></canvas>
 
-<!-- <script type="module" src="loading.js"></script> -->
+<div id="zoom-display">
+</div> 
+
+<!-- help window -->
+<div id="help">
+    <div id="help-content">
+        <!-- table with 2 cells one next to the other -->
+        <table>
+            <tr>
+                <td style="width: 80px; text-align: center;">
+                    <div id="help-content-left">
+                        <h1>Help</h1>
+                    </div>
+                </td>
+                <td>
+                    <div id="help-content-right">
+                        <p>
+                            <b>Arrow keys</b> - translate forward, backward, left, right | 
+                            <b>PageUp</b>/<b>PageDown</b> - translate up/down | 
+                            <b>A</b>/<b>D</b> - Rotate left/right (Yaw -/+) | 
+                            <b>W</b>/<b>S</b> - Rotate up/down (Pitch +/-) | 
+                            <b>Q</b>/<b>E</b> - Rotate counterclockwise/clockwise (Roll -/+) | 
+                            <b>+</b>/<b>-</b> - zoom in/out | 
+                            <b>0</b> - reset zoom |
+                            <b>Home</b> - reset view |
+                            <b>Escape</b> - exit |
+                            <b>H</b> - toggle help |
+                            <b>Z</b> - toggle zoom display
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
 <script type="module" src ="index.js"></script>
 
 </body>

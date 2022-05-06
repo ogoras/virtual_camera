@@ -11,6 +11,6 @@ function perspectiveProject(vertex) {
 
 export var camera = {
     //viewing angle
-    angledegrees : 150,
+    angledegrees : 120,
     project : perspectiveProject
 }

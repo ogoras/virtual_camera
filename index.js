@@ -53,6 +53,31 @@ document.addEventListener("keydown", function(event) {
         case "e":
             rotate(solids, "z", 15);
             break;
+        case "+":
+            if (camera.angledegrees > 5) {
+                camera.angledegrees -= 5;
+            }
+            break;
+        case "-":
+            camera.angledegrees += 5;
+            break;
+        case "0":
+            camera.angledegrees = 120;
+            break;
+        case "Home":
+            solids = loadSolidsFromFile("solids.txt");
+            break;
+        case "h":
+            //toggle help window
+            var help = document.getElementById("help");
+            if (help.style.display === "none") {
+                help.style.display = "block";
+            } else {
+                help.style.display = "none";
+            }
+            break
+        case "Escape":
+            close();
         default:
             return
     }
