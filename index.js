@@ -4,16 +4,15 @@ import { drawer } from './drawing.js';
 import { translate, rotate } from './transform.js';
 
 var canvas = document.getElementById("myCanvas");
+var zoom = document.getElementById("zoom-display");
+zoom.textContent = "Current zoom: " + camera.angledegrees;
 
 var solids = loadSolidsFromFile("solids.txt");
 
 drawer.initDrawer(canvas);
 
-console.log(drawer)
-// project the solids onto the canvas using perspective projection
 drawer.drawSolids(solids, camera);
 
-// translate the world on arrow keys
 document.addEventListener("keydown", function(event) {
     console.log(event.key)
     switch (event.key) {
@@ -56,13 +55,18 @@ document.addEventListener("keydown", function(event) {
         case "+":
             if (camera.angledegrees > 5) {
                 camera.angledegrees -= 5;
+                zoom.textContent = "Current zoom: " + camera.angledegrees;
             }
             break;
         case "-":
-            camera.angledegrees += 5;
+            if (camera.angledegrees < 175) {
+                camera.angledegrees += 5;
+                zoom.textContent = "Current zoom: " + camera.angledegrees;
+            }
             break;
         case "0":
             camera.angledegrees = 120;
+            zoom.textContent = "Current zoom: " + camera.angledegrees;
             break;
         case "Home":
             solids = loadSolidsFromFile("solids.txt");
@@ -74,6 +78,14 @@ document.addEventListener("keydown", function(event) {
                 help.style.display = "block";
             } else {
                 help.style.display = "none";
+            }
+            break
+        case "z":
+            //toggle zoom display
+            if (zoom.style.display === "none" || zoom.style.display === "") {
+                zoom.style.display = "block";
+            } else {
+                zoom.style.display = "none";
             }
             break
         case "Escape":

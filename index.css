@@ -5,3 +5,9 @@ canvas {
     margin-right: auto;
     display: block;
 }
+
+.zoom-display {
+    display: none;
+    margin-left: 10px;
+    color: #007700;
+}
